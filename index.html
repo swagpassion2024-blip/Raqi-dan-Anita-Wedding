@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raqi & Anita Wedding</title>
+    <!-- Google Fonts -->
+    <!-- 1. Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="no-scroll">
+    <div class="dust-container">
+        <div class="dust d1"></div>
+        <div class="dust d2"></div>
+        <div class="dust d3"></div>
+        <div class="dust d4"></div>
+        <div class="dust d5"></div>
+        <div class="dust d6"></div>
+        <div class="dust d7"></div>
+        <div class="dust d8"></div>
+        <div class="dust d9"></div>
+        <div class="dust d10"></div>
+    </div>
+
+    <!-- Audio Element (Dummy Music) -->
+    <audio id="bg-music" loop>
+        <source src="mc/Westlife_-_I_Wanna_Grow_Old_with_You_(mp3.pm).mp3"type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Button -->
+    <button id="music-btn" class="floating-btn" onclick="toggleMusic()">
+        <i id="music-icon" class="fas fa-play"></i>
+    </button>
+
+    <!-- 1. COVER (HERO SECTION) -->
+    <section id="cover-page">
+
+        <!-- Tambahan HTML untuk Background Video -->
+        <div class="video-container">
+            <!-- 1. Video untuk Laptop / Layar Lebar -->
+            <video autoplay loop muted playsinline class="bg-video video-laptop">
+            <source src="" type="video/mp4">
+        </video>
+
+            <!-- 2. Video untuk HP / Layar Tegak -->
+            <video autoplay loop muted playsinline class="bg-video video-hp">
+            <source src="bg/cover01.mp4" type="video/mp4">
+        </video>
+        </div>
+
+        <!-- Overlay Gelap agar teks mudah dibaca -->
+        <div class="overlay"></div>
+        <!-- Akhir Tambahan -->
+
+        <div class="cover-content">
+            <h4 class="wedding-of">The Wedding Of</h4>
+            <h1 class="couple-name-cover">Anita & Raqi </h1>
+            <p class="guest-info">Kepada Yth.<br>Bapak/Ibu/Saudara/i</p>
+            <h2 id="nama-tamu">Tamu Undangan</h2>
+
+            <button id="btn-buka" class="btn-primary">
+                <i class="fas fa-envelope-open-text"></i> Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- Hero Section (Inside) -->
+        <section class="hero reveal">
+        </section>
+
+        <!-- 2. KUTIPAN / AYAT (QUOTE) -->
+        <section id="quote" class="section-padding reveal">
+
+            <div class="container text-center">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="quote-text">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar
+                    terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                </p>
+                <p class="quote-source">- QS. Ar-Rum: 21 -</p>
+            </div>
+        </section>
+
+        <!-- 3. PROFIL MEMPELAI -->
+        <section id="couple" class="section-padding reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+
+                <!-- Hero Section (Inside) -->
+                <section class="hero reveal">
+                </section>
+
+                <div class="container text-center">
+                    <h2 class="section-title">Profil Mempelai</h2>
+                    <p class="section-subtitle">Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan acara pernikahan putra-putri kami:</p>
+
+                    <div class="couple-grid">
+                        <!-- Groom -->
+                        <div class="couple-card reveal">
+                            <div class="couple-img-wrapper">
+                                <img src="img/NBAL8002.jpg" alt="Bride" class="couple-img">
+                            </div>
+                            <h3 class="couple-name">Anita Karlina</h3>
+                            <p class="couple-parents">Putri kedua dari BpK. karsan & Ibu Nurjannah</p>
+                            <a href="https://www.instagram.com/iamietha/?utm_source=ig_web_button_share_sheet" class="social-link"><i class="fab fa-instagram"></i>@iamietha</a>
+                        </div>
+
+                        <div class="couple-and reveal">
+                            <h1>&</h1>
+                        </div>
+
+                        <!-- Bride -->
+                        <div class="couple-card reveal">
+                            <div class="couple-img-wrapper">
+                                <img src="img/NBAL8000.jpg" alt="Groom" class="couple-img">
+                            </div>
+                            <h3 class="couple-name">Raqi Hardiansyah</h3>
+                            <p class="couple-parents">Putra pertama dari Almarhum BpK. Baihaqi bin Romli & Ibu Neneng Rahmawati</p>
+                            <a href="https://www.instagram.com/raqihardi2/?utm_source=ig_web_button_share_sheet" class="social-link"><i class="fab fa-instagram"></i>@raqihardi2</a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- 4. DETAIL ACARA (EVENT) -->
+        <section id="event" class="section-padding reveal">
+
+            <div class="container text-center">
+                <h2 class="section-title">Save The Date</h2>
+
+                <!-- Countdown -->
+                <div id="countdown" class="countdown-grid reveal">
+                    <div class="cd-box"><span id="days">00</span>
+                        <p>Hari</p>
+                    </div>
+                    <div class="cd-box"><span id="hours">00</span>
+                        <p>Jam</p>
+                    </div>
+                    <div class="cd-box"><span id="minutes">00</span>
+                        <p>Menit</p>
+                    </div>
+                    <div class="cd-box"><span id="seconds">00</span>
+                        <p>Detik</p>
+                    </div>
+                </div>
+
+                <!-- TAMBAHAN: Tombol Simpan ke Kalender -->
+                <div class="calendar-btn-container reveal">
+                    <!-- Ganti tanda # dengan link Google Calendar acara Anda -->
+                    <a href="https://calendar.app.google/daCC91q7v3Bkm9z3A" target="_blank" class="btn-calendar">
+                        <!-- Icon kalender (membutuhkan FontAwesome) -->
+                        <i class="fas fa-calendar-alt"></i> Simpan ke Kalender
+                    </a>
+                </div>
+
+            </div>
+            <!-- Akhir Container Save The Date -->
+        </section>
+        <section id="event-details" class="section-padding reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+
+                <div class="container text-center">
+                    <div class="event-grid">
+                        <!-- KARTU AKAD NIKAH -->
+                        <div class="event-card reveal">
+                            <h2 class="section-title">Akad Nikah</h2>
+
+                            <div class="event-date-wrapper">
+                                <span class="event-day">Sabtu,</span>
+                                <span class="event-date">5</span>
+                                <span class="event-month-year">September 2026</span>
+                            </div>
+
+                            <div class="event-time">09:00 WIB</div>
+
+                            <div class="event-location">
+                                <span class="venue-name">Aula Masjid Jamie Ar Riyadh</span>
+                                <span class="venue-address">9, RT.9/RW.4, Cipedak, Kec. Jagakarsa, Kota Jakarta Selatan, DKI Jakarta 12630</span>
+                                <span class="venue-notes">(Dekat Fortune Swalayan)</span>
+                            </div>
+                        </div>
+
+                        <!-- KARTU RESEPSI -->
+                        <div class="event-card reveal">
+                            <h2 class="section-title">Resepsi</h2>
+
+                            <div class="event-date-wrapper">
+                                <span class="event-day">Sabtu,</span>
+                                <span class="event-date">5</span>
+                                <span class="event-month-year">September 2026</span>
+                            </div>
+
+                            <div class="event-time">11:00 - Selesai</div>
+
+                            <div class="event-location">
+                                <span class="venue-name">Aula Masjid Jamie Ar Riyadh</span>
+                                <span class="venue-address">9, RT.9/RW.4, Cipedak, Kec. Jagakarsa, Kota Jakarta Selatan, DKI Jakarta 12630</span>
+                                <span class="venue-notes">(Dekat Fortune Swalayan)</span>
+                            </div>
+                        </div>
+                        <!-- Tombol & Peta (Diletakkan di bagian paling bawah karena lokasinya sama) -->
+                        <div class="map-action-area">
+                            <a href="https://maps.app.goo.gl/tXZPQQzd3Rou28VP7" target="_blank" class="btn-outline">
+                                <i class="fas fa-map-marker-alt"></i> Lihat Lokasi
+                            </a>
+
+                            <div class="map-container">
+                                <!-- Lebar (width) diubah jadi 100% dan height 250 agar proporsional di HP -->
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d991.3264934247985!2d106.8003052!3d-6.3544229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efa5d90cf609%3A0x90c5e07ba89dbba!2sMasjid%20Jamie%20Ar%20Riyadh!5e0!3m2!1sid!2sid!4v1785644364936!5m2!1sid!2sid"
+                                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- 5. KISAH CINTA (LOVE STORY) -->
+        <section id="story" class="section-padding bg-light reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+
+                <div class="container text-center">
+                    <h2 class="section-title">Love Story</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Awal Pertemuan (2018)</h4>
+                                <p>Kami percaya tidak ada yang kebetulan di dunia ini. Pertemuan kami di tempat kerja rupanya menjadi skenario terindah dari Tuhan. Berawal dari sekadar rekan kerja, siapa sangka momen itu menjadi titik mula dari perjalanan
+                                    panjang kisah kami.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Perjalanan Cinta (2019)</h4>
+                                <p>Kami memutuskan untuk menjalin cerita bersama. Tentu, perjalanan cinta kami tidaklah selalu mudah. Kami pernah terpisah oleh jarak, diwarnai berbagai keraguan, hingga dihadapkan pada pilihan yang berat. Sempat berpisah
+                                    sejenak, namun pada akhirnya Tuhan kembali menuntun langkah kami untuk bersatu.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="timeline-item reveal">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Menikah</h4>
+                                <p>Berbekal keyakinan atas ketetapan-Nya, kami akan melangsungkan janji suci pernikahan pada tanggal 5 September 2026. Insyaallah, sebagaimana perkataan indah Sayyidina Ali bin Abi Thalib, "Apa yang menjadi takdirmu akan selalu
+                                    menemukan jalannya untuk menujumu."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- 6. GALERI (GALLERY) -->
+        <section id="gallery" class="section-padding reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+
+                <div class="container text-center">
+                    <h2 class="section-title">Our Gallery</h2>
+                    <div class="gallery-grid">
+                        <img src="img/NBAL8001.jpg" alt="Gallery 1" class="reveal">
+                        <img src="img/NBAL8003.jpg" alt="Gallery 2" class="reveal">
+                        <img src="img/NBAL8004.jpg" alt="Gallery 3" class="reveal">
+                        <img src="img/NBAL8131.jpg" alt="Gallery 4" class="reveal">
+                        <img src="img/NBAL8092.jpg" alt="Gallery 5" class="reveal">
+                        <img src="img/NBAL8100.jpg" alt="Gallery 6" class="reveal">
+                        <img src="img/NBAL8005.jpg" alt="Gallery 7" class="reveal">
+                    </div>
+                </div>
+        </section>
+
+        <!-- 7. HADIAH DIGITAL (WEDDING GIFT) -->
+        <section id="gift" class="section-padding reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+
+                <div class="container text-center">
+                    <h2 class="section-title">Wedding Gift</h2>
+                    <p class="section-subtitle">Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih dapat melalui rekening berikut:</p>
+
+                    <div class="gift-card reveal">
+                        <i class="fas fa-credit-card gift-icon"></i>
+                        <h3>Bank Mandiri</h3>
+                        <p id="rek-bca" class="rek-number">2671641576</p>
+                        <p class="rek-name">a.n. Anita Karlina</p>
+                        <button class="btn-outline btn-sm" onclick="copyText('rek-bca')">
+                        <i class="far fa-copy"></i> Salin Rekening
+                    </button>
+                    </div>
+
+                    <div class="gift-card reveal">
+                        <i class="fas fa-credit-card gift-icon"></i>
+                        <h3>Bank BCA</h3>
+                        <p id="rek-bca" class="rek-number">7005326401</p>
+                        <p class="rek-name">a.n. Raqi Hardiansyah</p>
+                        <button class="btn-outline btn-sm" onclick="copyText('rek-mandiri')">
+                        <i class="far fa-copy"></i> Salin Rekening
+                    </button>
+                    </div>
+                    <!-- Kartu 2: Kirim Kado Fisik / Alamat Rumah -->
+                    <div class="gift-card">
+                        <div class="gift-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h4>Kirim Kado Fisik</h4>
+                        <p class="address-text">
+                            Jl. Masjid Al Mukhlisin, No.59B, RT.11/RW.1, Kel. Cipedak, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta-12630.
+                        </p>
+                        <div class="rek-name">Penerima: Anita Karlina (082123721613)</div>
+                        <a href="https://maps.app.goo.gl/kjsJomgHmBqhA19c7" target="_blank" class="btn-copy">
+                            <i class="fas fa-map-marked-alt"></i> Buka Petunjuk Lokasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. RSVP & UCAPAN (WISHES) -->
+        <section id="rsvp" class="section-padding bg-light reveal">
+
+            <!-- TAMBAHKAN PEMBUNGKUS INI -->
+            <div class="profile-wrapper">
+                <div class="container text-center">
+                    <h2 class="section-title">RSVP & Wishes</h2>
+                    <p class="section-subtitle">Kehadiran dan doa restu Anda sangat berarti bagi kami.</p>
+
+                    <div class="rsvp-container">
+                        <!-- Pastikan form memiliki name="rsvp-form" -->
+                        <form id="rsvp-form" name="rsvp-form">
+                            <input type="text" name="nama" placeholder="Nama Anda" required>
+
+                            <select name="jumlah" required>
+                    <option value="" disabled selected>Jumlah Kehadiran</option>
+                    <option value="1">1 Orang</option>
+                    <option value="2">2 Orang</option>
+                </select>
+
+                            <select name="status" required>
+                    <option value="" disabled selected>Konfirmasi Kehadiran</option>
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak_hadir">Maaf, Tidak Bisa Hadir</option>
+                </select>
+
+                            <textarea name="ucapan" rows="4" placeholder="Tuliskan ucapan & doa..." required></textarea>
+
+                            <button type="submit" class="btn-primary w-100" id="btn-submit">Kirim RSVP & Ucapan</button>
+                        </form>
+
+                        <div class="wishes-box mt-4 text-left" id="wishes-container">
+                            <p class="text-center">Memuat ucapan...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCRIPT PENGHUBUNG KE GOOGLE SHEETS -->
+            <script>
+                // === 1. PASTE LINK ANDA DI SINI ===
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbzLsryd9RwYSJj4lBN6esfNRhn-GCMLR6Nd5jwDiXiFavc0-RiNYeTVjN-qrZwLUued/exec';
+
+                const form = document.forms['rsvp-form'];
+                const btnSubmit = document.getElementById('btn-submit');
+                const container = document.getElementById('wishes-container');
+
+                // === 2. FUNGSI MENAMPILKAN UCAPAN ===
+                function loadWishes() {
+                    container.innerHTML = '<p class="text-center">Memuat ucapan...</p>';
+
+                    fetch(scriptURL)
+                        .then(response => response.json())
+                        .then(data => {
+                            container.innerHTML = '';
+
+                            if (data.length === 0) {
+                                container.innerHTML = '<p class="text-center">Belum ada ucapan. Jadilah yang pertama!</p>';
+                                return;
+                            }
+
+                            data.forEach(item => {
+                                const badgeClass = item.status === 'hadir' ? 'hadir' : 'tidak-hadir';
+                                const badgeText = item.status === 'hadir' ? 'Hadir' : 'Tidak Hadir';
+
+                                const wishItem = `
+                        <div class="wish-item">
+                            <h5>${item.nama} <span class="badge ${badgeClass}">${badgeText}</span></h5>
+                            <p>${item.ucapan}</p>
+                        </div>
+                    `;
+                                container.innerHTML += wishItem;
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Gagal memuat ucapan:', error);
+                            container.innerHTML = '<p class="text-center text-danger">Gagal memuat ucapan. Pastikan koneksi internet lancar.</p>';
+                        });
+                }
+
+                // === 3. FUNGSI MENGIRIM DATA SAAT SUBMIT ===
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+
+                    btnSubmit.innerHTML = 'Mengirim...';
+                    btnSubmit.disabled = true;
+
+                    fetch(scriptURL, {
+                            method: 'POST',
+                            body: new FormData(form)
+                        })
+                        .then(response => {
+                            alert('Terima kasih! Pesan dan konfirmasi Anda telah terkirim.');
+                            form.reset(); // Kosongkan isian form
+                            loadWishes(); // Refresh ucapan untuk menampilkan yang baru
+                        })
+                        .catch(error => {
+                            console.error('Error!', error.message);
+                            alert('Gagal mengirim data. Silakan coba lagi.');
+                        })
+                        .finally(() => {
+                            btnSubmit.innerHTML = 'Kirim RSVP & Ucapan';
+                            btnSubmit.disabled = false;
+                        });
+                });
+
+                // Panggil fungsi saat website pertama kali dibuka
+                loadWishes();
+            </script>
+            </div>
+        </section>
+
+        <!-- 9. FOOTER -->
+        <footer class="footer">
+            <div class="container text-center">
+                <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
+                <p>Terima Kasih</p>
+                <h2 class="footer-couple">Anita & Raqi</h2>
+            </div>
+        </footer>
+
+        <!-- Floating Navigation Bar -->
+        <nav class="bottom-nav">
+            <a href="#couple" class="nav-item">
+                <i class="fas fa-heart"></i>
+                <span>Mempelai</span>
+            </a>
+            <a href="#event" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Acara</span>
+            </a>
+            <a href="#story" class="nav-item">
+                <i class="fas fa-heart"></i>
+                <span>Kisah Kami</span>
+            </a>
+            <a href="#" onclick="window.location.href = window.location.pathname; return false;" class="nav-item nav-cover">
+                <i class="fas fa-home"></i>
+                <span>Cover</span>
+            </a>
+            <a href="#gallery" class="nav-item">
+                <i class="fas fa-images"></i>
+                <span>Galeri</span>
+            </a>
+            <a href="#gift" class="nav-item">
+                <i class="fas fa-gift"></i>
+                <span>Hadiah</span>
+            </a>
+            <a href="#rsvp" class="nav-item">
+                <i class="fas fa-envelope-open-text"></i>
+                <span>RSVP</span>
+            </a>
+        </nav>
+
+    </main>
+
+    </main>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

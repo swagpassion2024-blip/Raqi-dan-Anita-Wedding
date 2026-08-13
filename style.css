@@ -1,0 +1,2097 @@
+/* 
+   Tema: Elegan 
+   Warna Utama: Putih (#FAF8F5), Emas (#D4AF37), Hijau Sage (#9BAE96)
+*/
+
+:root {
+    --bg-color: #b76e08;
+    /* Opsi 4: Gradasi memusat (melingkar dari tengah ke luar) */
+    --bg-gradient-radial: radial-gradient(circle, #002058, #000000);
+    --primary-color: #ffffff;
+    --shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    /* Sage Green */
+    --secondary-color: #d6c100;
+    /* Gold */
+    --text-color: #ffffff;
+    --text-light: #ffffff;
+    --font-heading: 'Tangerine', cursive;
+    --font-body: 'Cormorant Garamond', serif;
+    /* TAMBAHAN: Variabel Warna Gradasi */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 2000px;
+    background-color: var(--bg-color);
+    /* Latar belakang dasar yang lembut */
+    color: var(--text-color);
+}
+
+
+/* --- Trik Background Global Anti-Melar untuk HP --- */
+
+body::before {
+    content: '';
+    position: fixed;
+    /* Memaku gambar di layar */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Lebar pasti 100% layar HP */
+    height: 100vh;
+    /* Tinggi pasti 100% layar HP */
+    background-image: url(bg/BG02.jpg);
+    background-size: cover;
+    /* Menjamin gambar penuh tanpa ruang kosong dan tidak gepeng */
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    /* Memastikan background berada di lapisan paling belakang */
+}
+
+
+/* Kunci scroll sebelum cover dibuka */
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+/* Utilities */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-image: url(bg/cover01.mp4);
+}
+
+.section-title {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    /* PENGATURAN JARAK */
+    margin-bottom: 5px;
+    /* Ubah dari 20px menjadi 5px atau 0 agar rapat ke bawah */
+    line-height: 1.2;
+    /* Menghilangkan ruang kosong berlebih di atas/bawah teks */
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    font-family: 'Cormorant Garamond', cursive;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+
+/* Buttons */
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #d6c100;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-family: var(--font-body);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-sm {
+    padding: 6px 15px;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+
+/* --- PENGATURAN SECTION COVER --- */
+
+
+/* 1. Atur ukuran section utama agar persis seukuran layar */
+
+#cover-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Menggunakan tinggi layar penuh */
+    height: 100dvh;
+    /* Sangat disarankan untuk HP agar tidak tertutup bar navigasi browser */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* --- KONTEM VIDEO BACKGROUND --- */
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    /* Berada paling belakang */
+    overflow: hidden;
+}
+
+
+/* --- STYLING VIDEO --- */
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Sangat penting: membuat video memenuhi area tanpa terdistorsi/gepeng */
+    object-position: center;
+    /* Fokus di tengah video */
+}
+
+
+/* =========================================
+   2. TAMPILAN DEFAULT (LAPTOP / PC)
+   Layar di atas 768px
+========================================= */
+
+.video-laptop {
+    display: block;
+    /* Tampilkan video download.mp4 */
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+.video-hp {
+    display: none;
+    /* Sembunyikan video HP.mp4 */
+}
+
+
+/* =========================================
+   3. TAMPILAN KHUSUS HP (MOBILE)
+   Layar di bawah 768px
+========================================= */
+
+@media screen and (max-width: 768px) {
+    .video-laptop {
+        display: none;
+        /* Sembunyikan video laptop */
+    }
+    .video-hp {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        /* Tampilkan video HP (HP.mp4) */
+        object-fit: cover;
+        object-position: center;
+    }
+    .wedding-of {
+        font-size: 1rem;
+    }
+    .guest-info {
+        font-size: 1rem;
+    }
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: rgb(0, 0, 0);
+        border: none;
+        padding: 8px 18px;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: 500;
+    }
+}
+
+
+/* --- OVERLAY GELAP AGAR TEKS TERBACA --- */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    /* 0.5 adalah tingkat kegelapan, bisa diubah 0.1 - 0.9 */
+    z-index: -2;
+    /* Berada di antara video dan teks */
+}
+
+
+/* --- KONTEN TEKS (Posisi di atas) --- */
+
+.cover-content {
+    position: relative;
+    z-index: 1;
+    /* Pastikan teks ada di atas overlay dan video */
+    text-align: center;
+    color: #ffffff;
+    /* Warna teks harus kontras (putih) */
+}
+
+
+/* 1. Membuat Rule Animasi */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Mulai dari 30px di bawah */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        /* Kembali ke posisi asli */
+    }
+}
+
+
+/* 2. Menerapkan Animasi ke Elemen HTML Anda */
+
+.wedding-of {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.2s;
+    /* Muncul paling pertama */
+    opacity: 0;
+    /* Agar sembunyi sebelum animasi mulai */
+}
+
+.couple-name-cover {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.5s;
+    /* Muncul kedua */
+    opacity: 0;
+}
+
+.guest-info {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.8s;
+    /* Muncul ketiga */
+    opacity: 0;
+}
+
+#btn-buka {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1.1s;
+    /* Tombol muncul terakhir */
+    opacity: 0;
+}
+
+
+/* 1. Cover (Hero Section) */
+
+#cover-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bg/F03.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.cover-content {
+    text-align: center;
+    color: white;
+}
+
+.wedding-of {
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.couple-name-cover {
+    font-family: 'Tangerine', cursive;
+    font-size: 7rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    text-shadow: var(--shadow);
+}
+
+.guest-info {
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+#nama-tamu {
+    margin-top: 15px;
+    /* Jarak dari guest-info ke nama tamu */
+    margin-bottom: 15px;
+    /* Jarak dari nama tamu ke tombol buka undangan */
+    /* Opsional: Sesuaikan ukuran dan ketebalan huruf agar nama tamu menonjol */
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+
+/* Inner Hero */
+
+.hero-text {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-family: 'Cormorant Garamond', cursive;
+}
+
+
+/* 2. Quote */
+
+#quote {
+    min-height: 100vh;
+    /* 1. MENGGABUNGKAN WARNA GELAP DAN FOTO BACKGROUND */
+    /* rgba(0,0,0, 0.6) berarti warna hitam dengan tingkat transparansi 60% */
+    background-image: linear-gradient(rgba(0, 7, 104, 0.6), rgba(54, 54, 54, 0.6)), url(bg/NBAL8264.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* 2. MENGETENGAHKAN TEKS SECARA SEMPURNA */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Membuat konten berada persis di tengah atas-bawah */
+    align-items: center;
+    /* Membuat konten berada persis di tengah kiri-kanan */
+    /* Jarak aman tepi layar */
+    padding: 20px;
+}
+
+.quote-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    z-index: 1;
+    /* Bayangan: Kanan 2px, Bawah 2px, Blur 4px, Warna Hitam 70% */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.quote-source {
+    font-weight: 80;
+    color: var(--text-light);
+    z-index: 1;
+    /* Bayangan: Kanan 2px, Bawah 2px, Blur 4px, Warna Hitam 70% */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* 3. Profil */
+
+
+/* --- Pengaturan Background Section Profil agar Full Layar --- */
+
+#couple,
+#event-details,
+#story,
+#gallery,
+#gift,
+#rsvp {
+    min-height: 100vh;
+    /* 1. MENGGABUNGKAN OVERLAY GELAP DAN FOTO BACKGROUND */
+    /* rgba(0,0,0, 0.8) artinya warna hitam dengan transparansi 80% (semakin tinggi angkanya, semakin gelap fotonya) */
+    background-image: linear-gradient(rgba(0, 7, 104, 0.6), rgba(54, 54, 54, 0.6)), url(bg/BG.jpg);
+    /* <-- Ganti dengan nama file foto Anda */
+    /* 2. PENGATURAN TAMPILAN BACKGROUND */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* (Opsional) Tambahkan baris di bawah ini jika ingin fotonya diam saat layar discroll (Efek Parallax) */
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 15px;
+    /* Memberi jarak aman agar tidak menempel di tepi HP */
+    gap: 15px;
+}
+
+.couple-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+}
+
+@media (min-width: 768px) {
+    .couple-grid {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+}
+
+.couple-card {
+    text-align: center;
+    max-width: 250px;
+}
+
+
+/* BINGKAI FOTO MEMPELAI */
+
+.couple-img-wrapper {
+    width: 240px;
+    height: 320px;
+    /* Dibuat sedikit lebih tinggi dari lebarnya untuk bentuk kubah */
+    margin: 15px auto 25px;
+    /* GAYA 1: Bentuk Kubah/Arch (Tren Undangan Modern) */
+    border-radius: 120px 120px 10px 10px;
+    /* GAYA 2: Jika tetap ingin bentuk daun/asimetris Anda, gunakan:
+       border-radius: 50% 0 50% 0; */
+    overflow: hidden;
+    /* Bayangan diperhalus agar memberi kesan mengambang elegan */
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.couple-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    /* Efek halus saat di-hover */
+}
+
+.couple-img-wrapper:hover .couple-img {
+    transform: scale(1.2);
+    /* Zoom in sangat perlahan saat disentuh */
+}
+
+
+/* NAMA MEMPELAI */
+
+.couple-name {
+    font-family: 'Tangerine', cursive;
+    font-size: 4.5rem;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+    line-height: 1;
+    /* Mencegah jarak font latin terlalu jauh */
+    /* TAMBAHAN SHADOW */
+    /* format: offset-x | offset-y | blur-radius | color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    /* Memberikan sedikit kedalaman tanpa merusak keindahan font script */
+}
+
+
+/* NAMA ORANG TUA */
+
+.couple-parents {
+    font-size: 1rem;
+    /* Diperkecil agar nama mempelai lebih menonjol */
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-style: italic;
+    /* Menambah kesan klasik */
+    letter-spacing: 1px;
+    /* Jarak antar huruf sedikit dilebarkan */
+}
+
+
+/* KATA PENGHUBUNG (DAN / &) */
+
+.couple-and h1 {
+    font-family: 'Tangerine', cursive;
+    font-size: 3.5rem;
+    /* Sedikit lebih kecil dari nama mempelai */
+    color: var(--secondary-color);
+    margin: 15px 0;
+    /* Memberi ruang napas atas dan bawah */
+}
+
+
+/* TOMBOL SOSIAL MEDIA */
+
+.social-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    /* Ukuran font disesuaikan agar rapi */
+    margin: 0 5px;
+    /* Border dipertipis menjadi 1px dan warnanya dibuat lebih pudar */
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    /* Bentuk kapsul (Pill) biasanya terlihat lebih elegan daripada kotak */
+    border-radius: 30px;
+    padding: 6px 18px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+
+/* EFEK HOVER TOMBOL */
+
+.social-link:hover {
+    color: #d6c100;
+    /* Teks berubah terang */
+    background-color: var(--primary-color);
+    /* Latar belakang terisi */
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    /* Naik sedikit tanpa mengubah ukuran teks */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- Pengaturan Bingkai Mengelilingi Seluruh Isi Profil --- */
+
+.profile-wrapper {
+    /* --- 1. PENGATURAN BINGKAI (BORDER) --- */
+    border: 4px solid var(--secondary-color);
+    /* Garis tebal warna emas/sekunder */
+    border-radius: 20px;
+    /* Menumpulkan sudut bingkai agar elegan */
+    /* --- 2. JARAK & UKURAN KOTAK --- */
+    /* Ruang di dalam bingkai agar konten tidak menempel ke garis */
+    padding: 50px 30px;
+    /* Membatasi lebar kotak agar tidak melebar penuh di layar laptop */
+    max-width: 900px;
+    /* Sesuaikan lebar ini sesuai selera Anda */
+    width: 100%;
+    /* --- 3. LATAR BELAKANG DI DALAM BINGKAI --- */
+    /* Memberikan warna dasar sedikit putih transparan di dalam kotak */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Efek Blur pada background di dalam kotak (Opsional, sangat mewah) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk Safari */
+    /* --- 4. PENGETENGAHAN KONTEN DI DALAMNYA --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Jarak otomatis antar elemen (judul, subtitle, grid) */
+    /* Bayangan agar kotak terlihat "terangkat" */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Penyesuaian Media Query untuk HP --- */
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        /* Perkecil padding di HP agar konten tidak terlalu sempit */
+        padding: 30px 15px;
+        border-width: 3px;
+        /* Garis sedikit ditipiskan di HP */
+    }
+}
+
+
+/* 4. Event & Countdown */
+
+#save-date {
+    /* Membuat section ini memenuhi satu layar penuh agar terlihat terpisah */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* Mengetengahkan konten secara vertikal */
+    justify-content: center;
+    /* Tambahkan Background berbeda jika ingin pemisahan lebih kuat */
+    /* background-color: var(--bg-color-alt); */
+    /* background-image: url('bg/bg-timer.jpg'); */
+}
+
+
+/* Mengatur jarak countdown agar pas di tengah section layar penuh */
+
+#countdown {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.event {
+    /* Pastikan .event memiliki background gambar/warna yang bagus agar efek kacanya terlihat */
+    padding: 60px 0;
+    position: relative;
+}
+
+.countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.cd-box {
+    /* Efek Kaca (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 15px;
+    border-radius: 16px;
+    min-width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* Border putih transparan yang tipis */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.cd-box span {
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #ffffff;
+    /* Warna teks putih */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Agar terbaca di background terang/gelap */
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.cd-box p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+
+/* CONTAINER TOMBOL KALENDER */
+
+.calendar-btn-container {
+    margin-top: 35px;
+    /* Memberi jarak napas dari countdown */
+    margin-bottom: 10px;
+}
+
+
+/* GAYA TOMBOL KALENDER ELEGAN */
+
+.btn-calendar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 32px;
+    /* Background transparan dengan border tipis memberi kesan premium */
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    /* Pastikan Anda punya variabel ini, misal warna emas */
+    border-radius: 30px;
+    /* Bentuk kapsul yang luwes */
+    color: var(--text-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Jarak huruf dilebarkan */
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+
+/* EFEK SAAT TOMBOL DISENTUH/DIARAHKAN KURSOR */
+
+.btn-calendar:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    /* Mengambang sedikit ke atas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Ukuran ikon kalender */
+
+.btn-calendar i {
+    font-size: 1.1rem;
+}
+
+.event-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .event-grid {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0px;
+    }
+}
+
+
+/* =========================================
+   1. KARTU ACARA (BINGKAI UTAMA)
+========================================= */
+
+.event-card {
+    background: rgba(255, 255, 255, 0.05);
+    /* Latar transparan yang mewah */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    /* Garis emas tipis */
+    border-radius: 20px;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    /* Jarak antara kartu Akad dan Resepsi */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--secondary-color, #c5a880);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   2. TANGGAL
+========================================= */
+
+.event-date-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color, #333);
+}
+
+.event-day,
+.event-month-year {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+.event-date {
+    font-size: 7rem;
+    /* Disesuaikan agar proporsional di HP */
+    font-weight: bold;
+    color: var(--primary-color, #8c7a6b);
+    line-height: 0.8;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   3. WAKTU
+========================================= */
+
+.event-time {
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: 600;
+    color: #ffffff;
+    /* Jarak Waktu */
+    margin-top: 15px;
+    margin-bottom: 20px;
+    /* Jarak menuju ke area lokasi */
+}
+
+
+/* =========================================
+   4. LOKASI
+========================================= */
+
+.event-location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.venue-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color, #333);
+    margin-bottom: 5px;
+}
+
+.venue-address {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* Ubah ke putih jika background Anda gelap */
+    line-height: 1.4;
+    max-width: 85%;
+}
+
+.venue-notes {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--secondary-color, #c5a880);
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   5. TOMBOL & PETA
+========================================= */
+
+.map-action-area {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 35px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border: 1.5px solid var(--secondary-color, #c5a880);
+    border-radius: 50px;
+    color: var(--secondary-color, #c5a880);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-color, #c5a880);
+    color: #ffffff;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 400px;
+    /* Agar peta tidak terlalu lebar di layar laptop */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* --- Pengaturan Bingkai Mengelilingi Seluruh Isi Profil --- */
+
+.profile-wrapper {
+    /* --- 1. PENGATURAN BINGKAI (BORDER) --- */
+    border: 4px solid var(--secondary-color);
+    /* Garis tebal warna emas/sekunder */
+    border-radius: 20px;
+    /* Menumpulkan sudut bingkai agar elegan */
+    /* --- 2. JARAK & UKURAN KOTAK --- */
+    /* Ruang di dalam bingkai agar konten tidak menempel ke garis */
+    padding: 50px 30px;
+    /* Membatasi lebar kotak agar tidak melebar penuh di layar laptop */
+    max-width: 900px;
+    /* Sesuaikan lebar ini sesuai selera Anda */
+    width: 100%;
+    /* --- 3. LATAR BELAKANG DI DALAM BINGKAI --- */
+    /* Memberikan warna dasar sedikit putih transparan di dalam kotak */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Efek Blur pada background di dalam kotak (Opsional, sangat mewah) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk Safari */
+    /* --- 4. PENGETENGAHAN KONTEN DI DALAMNYA --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Jarak otomatis antar elemen (judul, subtitle, grid) */
+    /* Bayangan agar kotak terlihat "terangkat" */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Penyesuaian Media Query untuk HP --- */
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        /* Perkecil padding di HP agar konten tidak terlalu sempit */
+        padding: 30px 15px;
+        border-width: 3px;
+        /* Garis sedikit ditipiskan di HP */
+    }
+}
+
+
+/* =========================================
+   5. LOVE STORY TIMELINE (ROMANTIS & ELEGAN)
+========================================= */
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px 0;
+}
+
+
+/* Garis Vertikal Timeline */
+
+
+/* Dibuat lebih tipis (1px) agar terkesan halus dan elegan */
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0), var(--secondary-color, #c5a880), /* Fallback warna Emas Champagne */
+    var(--secondary-color, #c5a880), rgba(255, 255, 255, 0));
+    top: 0;
+    bottom: 0;
+    left: 20px;
+}
+
+
+/* Wadah Utama Item Timeline */
+
+.timeline-item {
+    padding: 10px 0 30px 45px;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    transition: transform 0.4s ease;
+}
+
+
+/* Efek sentuhan lembut saat kursor diarahkan (hover) */
+
+.timeline-item:hover {
+    transform: translateX(5px);
+}
+
+
+/* Titik / Dot Penanda Waktu - Desain Cincin Elegan */
+
+.timeline-dot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    /* Warna dasar dalam */
+    border: 1.5px solid var(--secondary-color, #c5a880);
+    border-radius: 50%;
+    top: 15px;
+    left: 11px;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+    /* Cahaya (glow) yang lebih hangat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Titik kecil di dalam penanda (menimbulkan efek berlian/cincin) */
+
+.timeline-dot::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--secondary-color, #c5a880);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+
+/* Memperbesar titik dalam saat di-hover */
+
+.timeline-item:hover .timeline-dot::after {
+    transform: scale(1.5);
+}
+
+
+/* =========================================
+   TAMBAHAN: Kotak Konten (Untuk Teks)
+========================================= */
+
+
+/* Tempatkan teks Anda di dalam div dengan class ini */
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.5);
+    /* Semi transparan */
+    backdrop-filter: blur(8px);
+    /* Efek embun/kaca kekinian (modern) */
+    -webkit-backdrop-filter: blur(8px);
+    /* Dukungan untuk Safari */
+    border-left: 2px solid var(--secondary-color, #c5a880);
+    padding: 18px 25px;
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    /* Bayangan yang sangat tipis */
+}
+
+
+/* Estetika teks tanggal */
+
+.timeline-date {
+    display: block;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--secondary-color, #c5a880);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+
+/* Kartu Konten Cerita (Glassmorphism) */
+
+.timeline-content {
+    padding: 15px 18px;
+    background: rgba(255, 255, 255, 0.15);
+    /* Latar transparan elegan */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+
+/* Efek Hover Saat Disentuh / Diarahkan Kursor */
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(5px);
+    /* Bergeser sedikit ke kanan */
+    background: rgba(5, 5, 5, 0.25);
+    border-color: rgba(251, 251, 253, 0.4);
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    /* Titik membesar halus */
+}
+
+
+/* Judul Momen / Tahun */
+
+.timeline-content h4 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-style: bold;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+}
+
+
+/* Isian Cerita */
+
+.timeline-content p {
+    font-size: 1.5rem;
+    /* Ukuran teks ideal dan proporsional */
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+}
+
+
+/* --- Pengaturan Bingkai Mengelilingi Seluruh Isi Profil --- */
+
+.profile-wrapper {
+    /* --- 1. PENGATURAN BINGKAI (BORDER) --- */
+    border: 4px solid var(--secondary-color);
+    /* Garis tebal warna emas/sekunder */
+    border-radius: 20px;
+    /* Menumpulkan sudut bingkai agar elegan */
+    /* --- 2. JARAK & UKURAN KOTAK --- */
+    /* Ruang di dalam bingkai agar konten tidak menempel ke garis */
+    padding: 50px 30px;
+    /* Membatasi lebar kotak agar tidak melebar penuh di layar laptop */
+    max-width: 900px;
+    /* Sesuaikan lebar ini sesuai selera Anda */
+    width: 100%;
+    /* --- 3. LATAR BELAKANG DI DALAM BINGKAI --- */
+    /* Memberikan warna dasar sedikit putih transparan di dalam kotak */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Efek Blur pada background di dalam kotak (Opsional, sangat mewah) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk Safari */
+    /* --- 4. PENGETENGAHAN KONTEN DI DALAMNYA --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Jarak otomatis antar elemen (judul, subtitle, grid) */
+    /* Bayangan agar kotak terlihat "terangkat" */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Penyesuaian Media Query untuk HP --- */
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        /* Perkecil padding di HP agar konten tidak terlalu sempit */
+        padding: 30px 15px;
+        border-width: 3px;
+        /* Garis sedikit ditipiskan di HP */
+    }
+}
+
+
+/* =========================================
+   STYLE 1: PORTRAIT HERO GRID (BERKLAS)
+========================================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+}
+
+
+/* Foto Pertama: Portrait Tinggi (3:4) */
+
+.gallery-grid img:first-child {
+    grid-row: span 2;
+    aspect-ratio: 3 / 4;
+}
+
+
+/* Foto Lainnya: Persegi Simetris (1:1) */
+
+.gallery-grid img:not(:first-child) {
+    aspect-ratio: 1 / 1;
+}
+
+
+/* Hover Efek Melayang Halus */
+
+.gallery-grid img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* --- Pengaturan Bingkai Mengelilingi Seluruh Isi Profil --- */
+
+.profile-wrapper {
+    /* --- 1. PENGATURAN BINGKAI (BORDER) --- */
+    border: 4px solid var(--secondary-color);
+    /* Garis tebal warna emas/sekunder */
+    border-radius: 20px;
+    /* Menumpulkan sudut bingkai agar elegan */
+    /* --- 2. JARAK & UKURAN KOTAK --- */
+    /* Ruang di dalam bingkai agar konten tidak menempel ke garis */
+    padding: 50px 30px;
+    /* Membatasi lebar kotak agar tidak melebar penuh di layar laptop */
+    max-width: 900px;
+    /* Sesuaikan lebar ini sesuai selera Anda */
+    width: 100%;
+    /* --- 3. LATAR BELAKANG DI DALAM BINGKAI --- */
+    /* Memberikan warna dasar sedikit putih transparan di dalam kotak */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Efek Blur pada background di dalam kotak (Opsional, sangat mewah) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk Safari */
+    /* --- 4. PENGETENGAHAN KONTEN DI DALAMNYA --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Jarak otomatis antar elemen (judul, subtitle, grid) */
+    /* Bayangan agar kotak terlihat "terangkat" */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Penyesuaian Media Query untuk HP --- */
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        /* Perkecil padding di HP agar konten tidak terlalu sempit */
+        padding: 30px 15px;
+        border-width: 3px;
+        /* Garis sedikit ditipiskan di HP */
+    }
+}
+
+
+/* 7. RSVP & Wishes */
+
+.rsvp-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+/* Desain Input Form yang Lebih Modern */
+
+#rsvp-form input,
+#rsvp-form select,
+#rsvp-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    /* Padding sedikit diperbesar agar lebih lega */
+    margin-bottom: 18px;
+    border: 1px solid #e2e8f0;
+    /* Warna garis tepi lebih lembut */
+    border-radius: 10px;
+    /* Sudut lebih melengkung */
+    font-family: var(--font-body);
+    background-color: #fafbfc;
+    /* Latar belakang form sangat tipis */
+    transition: all 0.3s ease;
+    /* Transisi halus saat diklik */
+    box-sizing: border-box;
+}
+
+#rsvp-form input:focus,
+#rsvp-form select:focus,
+#rsvp-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
+    /* Efek glow lembut saat aktif */
+}
+
+
+/* --- KOTAK UCAPAN (TRANSPARAN) --- */
+
+.wishes-box {
+    background-color: transparent;
+    border: none;
+    height: 320px;
+    overflow-y: auto;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Menyusun bubble ke kiri secara rapi */
+    gap: 12px;
+    /* Jarak antar bubble ucapan */
+}
+
+
+/* --- DAFTAR UCAPAN --- */
+
+.wish-item {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px 16px 16px 16px;
+    /* Sudut khas bubble chat */
+    padding: 10px 14px !important;
+    margin: 0 !important;
+    width: fit-content;
+    max-width: 85%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.wish-item:hover {
+    transform: translateY(-2px);
+    /* Efek melayang saat kursor diarahkan */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+/* --- WARNA TEKS NAMA & UCAPAN (Pastikan Gelap) --- */
+
+.wish-item h5 {
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    margin: 0 0 4px 0 !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    line-height: 1 !important;
+}
+
+
+/* --- TEKS UCAPAN --- */
+
+.wish-item p {
+    font-size: 0.83rem !important;
+    color: #334155 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.35 !important;
+    word-break: break-word;
+    /* Mencegah teks panjang merusak ukuran kotak */
+}
+
+
+/* Kustomisasi Scrollbar */
+
+.wishes-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wishes-box::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.wishes-box::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+
+/* Desain List Ucapan */
+
+.wish-item {
+    border-bottom: 1px dashed #e2e8f0;
+    /* Garis bawah putus-putus terlihat lebih manis */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.wish-item:hover {
+    transform: translateX(4px);
+    /* Efek bergeser sedikit saat disentuh/hover */
+}
+
+.wish-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.wish-item h5 {
+    font-size: 0.95rem;
+    margin: 0 0 6px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}
+
+.wish-item p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.5;
+}
+
+//* --- BADGE KEHADIRAN RINGKAS --- */
+.badge {
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    padding: 3px 8px !important;
+    border-radius: 20px !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+}
+
+.badge.hadir {
+    background-color: #dcfce7 !important;
+    color: #15803d !important;
+}
+
+.badge.tidak-hadir {
+    background-color: #f1f5f9 !important;
+    color: #64748b !important;
+}
+
+
+/* --- Pengaturan Bingkai Mengelilingi Seluruh Isi Profil --- */
+
+.profile-wrapper {
+    /* --- 1. PENGATURAN BINGKAI (BORDER) --- */
+    border: 4px solid var(--secondary-color);
+    /* Garis tebal warna emas/sekunder */
+    border-radius: 20px;
+    /* Menumpulkan sudut bingkai agar elegan */
+    /* --- 2. JARAK & UKURAN KOTAK --- */
+    /* Ruang di dalam bingkai agar konten tidak menempel ke garis */
+    padding: 50px 30px;
+    /* Membatasi lebar kotak agar tidak melebar penuh di layar laptop */
+    max-width: 900px;
+    /* Sesuaikan lebar ini sesuai selera Anda */
+    width: 100%;
+    /* --- 3. LATAR BELAKANG DI DALAM BINGKAI --- */
+    /* Memberikan warna dasar sedikit putih transparan di dalam kotak */
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Efek Blur pada background di dalam kotak (Opsional, sangat mewah) */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    /* Untuk Safari */
+    /* --- 4. PENGETENGAHAN KONTEN DI DALAMNYA --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Jarak otomatis antar elemen (judul, subtitle, grid) */
+    /* Bayangan agar kotak terlihat "terangkat" */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Penyesuaian Media Query untuk HP --- */
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        /* Perkecil padding di HP agar konten tidak terlalu sempit */
+        padding: 30px 15px;
+        border-width: 3px;
+        /* Garis sedikit ditipiskan di HP */
+    }
+}
+
+
+/* =========================================
+   8. WEDDING GIFT CARD (LUXE & ELEGAN)
+========================================= */
+
+.gift-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 24px 20px;
+    max-width: 380px;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Efek Kilaunya Kartu Saat Disentuh */
+
+.gift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Logo Bank / Icon Gift */
+
+.gift-icon {
+    font-size: 2.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+
+/* Nomor Rekening (Tampak Tegas Seperti Kartu ATM) */
+
+.rek-number {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--primary-color, #1e293b);
+    margin: 12px 0 4px 0;
+    font-family: monospace, monospace;
+    /* Gaya font kartu ATM */
+}
+
+
+/* Nama Pemilik Rekening */
+
+.rek-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light, #64748b);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+
+/* --- PERBAIKAN STYLES TOMBOL (Bisa untuk <button> & <a>) --- */
+
+.btn-copy {
+    background: var(--secondary-color);
+    color: #ffffff !important;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Penyelarasan untuk Tag <a> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none !important;
+    line-height: 1;
+    margin-top: auto;
+}
+
+.btn-copy:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    color: #ffffff !important;
+}
+
+
+/* 9. Footer */
+
+.footer {
+    position: relative;
+    overflow: hidden;
+    /* Mencegah inisial tumpah ke luar kotak */
+    padding: 80px 20px 60px;
+    text-align: center;
+    background: linear-gradient(to bottom, #002058 0%, #000000 100%);
+}
+
+.footer p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-couple {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+
+/* Scroll Reveal Animation */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TOMBOL MUSIK TRANSPARAN (GLASSMORPHISM)
+========================================= */
+
+.floating-btn {
+    /* Posisi di pojok kanan bawah */
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 999;
+    /* Ukuran dan Bentuk Bulat Sempurna */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Posisi Ikon di Tengah */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* --- EFEK TRANSPARAN & ELEGAN --- */
+    background: rgba(255, 255, 255, 0.25);
+    /* Latar belakang putih transparan */
+    backdrop-filter: blur(8px);
+    /* Efek kaca berembun */
+    -webkit-backdrop-filter: blur(8px);
+    /* Dukungan untuk browser Safari */
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    /* Garis tepi putih tipis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Bayangan sangat halus */
+    /* Estetika Ikon */
+    color: var(--secondary-color, #c5a880);
+    /* Warna ikon (gunakan warna tema Anda, misal emas/cokelat) */
+    font-size: 1.2rem;
+    cursor: pointer;
+    outline: none;
+    /* Transisi halus saat disentuh */
+    transition: all 0.3s ease;
+}
+
+
+/* Efek saat tombol disentuh atau di-hover */
+
+.floating-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    /* Sedikit lebih terang saat disentuh */
+    transform: scale(1.08);
+    /* Membesar sedikit */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* --- ANIMASI OPSIONAL (Berputar saat musik menyala) --- */
+
+
+/* Tambahkan class 'playing' pada button via JavaScript saat musik nyala */
+
+.floating-btn.playing i {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* PENGATURAN SUPER KUAT UNTUK MENU COVER */
+
+nav.bottom-nav a.nav-item.nav-cover {
+    transform: translateY(-5px) !important;
+    /* Saya naikkan posisinya agar lebih terlihat perubahannya */
+}
+
+nav.bottom-nav a.nav-item.nav-cover i {
+    font-size: 2rem !important;
+    /* Ukuran diperbesar drastis untuk menguji perubahan */
+    color: var(--primary-color) !important;
+    /* Sengaja diubah warnanya agar Anda tahu kodenya bekerja */
+    margin-bottom: 2px !important;
+}
+
+nav.bottom-nav a.nav-item.nav-cover span {
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+}
+
+
+/* EFEK ANIMASI SAAT TOMBOL COVER DI-KLIK */
+
+nav.bottom-nav a.nav-item.nav-cover:active {
+    /* Tombol mengecil ke ukuran 85% dan posisinya sedikit turun dari status hover-nya */
+    transform: translateY(-5px) scale(0.85) !important;
+    /* Transisi dipercepat menjadi 0.1 detik agar terasa responsif saat ditekan */
+    transition: transform 0.1s ease !important;
+    /* Opsional: Membuat warnanya sedikit meredup saat ditekan */
+    opacity: 0.7;
+}
+
+
+/* =========================================
+    BOTTOM NAVIGATION BAR (TRANSPARAN)
+========================================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    /* Membatasi lebar max agar rapi di desktop */
+    /* Latar Belakang Transparan & Efek Kaca (Glassmorphism) */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Transparansi 20% */
+    backdrop-filter: blur(12px);
+    /* Efek kaca buram (blur) */
+    -webkit-backdrop-filter: blur(12px);
+    /* Dukungan Safari browser */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    /* Garis tepi atas transparan */
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    /* Bayangan sangat halus */
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    z-index: 1000;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+}
+
+.nav-item span {
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-item:hover,
+.nav-item:active {
+    transform: translateY(-3px);
+}
+
+.nav-item:hover i,
+.nav-item:hover span {
+    color: #000000;
+}
+
+.dust-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.dust {
+    position: absolute;
+    bottom: -10%;
+    /* Memulai dari bawah layar */
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.7);
+    /* Warna emas transparan */
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+    /* Efek bercahaya/glowing */
+    animation: floatUp linear infinite;
+}
+
+
+/* Animasi melayang ke atas sambil perlahan menghilang */
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        /* Muncul perlahan */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        /* Bergerak ke atas layar */
+        opacity: 0;
+        /* Menghilang perlahan */
+    }
+}
+
+
+/* Ukuran dan kecepatan acak untuk setiap partikel */
+
+.d1 {
+    left: 10%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 12s;
+}
+
+.d2 {
+    left: 25%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.d3 {
+    left: 45%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 15s;
+    animation-delay: 4s;
+}
+
+.d4 {
+    left: 60%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 20s;
+    animation-delay: 1s;
+}
+
+.d5 {
+    left: 75%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 14s;
+    animation-delay: 5s;
+}
+
+.d6 {
+    left: 85%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 17s;
+    animation-delay: 3s;
+}
+
+.d7 {
+    left: 35%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 19s;
+    animation-delay: 6s;
+}
+
+.d8 {
+    left: 55%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 13s;
+    animation-delay: 8s;
+}
+
+.d9 {
+    left: 15%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 16s;
+    animation-delay: 7s;
+}
+
+.d10 {
+    left: 80%;
+    width: 5px;
+    height: 5px;
+    animation-duration: 22s;
+    animation-delay: 9s;
+}
+
+
+/* ANIMASI JATUH & BERPUTAR */
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        /* Jatuh sampai melewati layar bawah */
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ANIMASI BERAYUN (KE KIRI & KANAN) */
+
+@keyframes sway {
+    0% {
+        margin-left: -20px;
+    }
+    100% {
+        margin-left: 20px;
+    }
+}
+
+
+/* VARIASI POSISI, UKURAN, DAN KECEPATAN TIAP BUNGA */
+
+
+/* Angka pertama = kecepatan jatuh, Angka kedua = kecepatan ayun */
+
+.f1 {
+    left: 10%;
+    animation-duration: 10s, 3s;
+    font-size: 1.2rem;
+}
+
+.f2 {
+    left: 25%;
+    animation-duration: 14s, 4s;
+    animation-delay: 2s, 0s;
+    font-size: 1.8rem;
+    opacity: 0.5;
+}
+
+.f3 {
+    left: 40%;
+    animation-duration: 12s, 3.5s;
+    animation-delay: 4s, 2s;
+    font-size: 1.5rem;
+}
+
+.f4 {
+    left: 55%;
+    animation-duration: 16s, 5s;
+    animation-delay: 1s, 1s;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.f5 {
+    left: 70%;
+    animation-duration: 11s, 3s;
+    animation-delay: 3s, 1.5s;
+    font-size: 1.6rem;
+}
+
+.f6 {
+    left: 85%;
+    animation-duration: 15s, 4.5s;
+    animation-delay: 5s, 2.5s;
+    font-size: 1.3rem;
+    opacity: 0.6;
+}
+
+.f7 {
+    left: 15%;
+    animation-duration: 13s, 3.2s;
+    animation-delay: 6s, 3s;
+    font-size: 1.7rem;
+}
+
+.f8 {
+    left: 75%;
+    animation-duration: 17s, 4.8s;
+    animation-delay: 7s, 1.2s;
+    font-size: 1.4rem;
+}
+
+
+/* Scroll halus ketika menu di-klik */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Media Query */
+
+
+/* laptop */
+
+@media (max-width: 992px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+
+/* tablet */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 65%;
+    }
+}
+
+
+/* mobile phone */
+
+@media (max-width: 576px) {
+    html {
+        font-size: 60%;
+    }
+}
